@@ -1,0 +1,24 @@
+{
+  "name": "psadmin",
+  "version": "1.0.0",
+  "description": "Pluralsight tutorial on React &amp; Redux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adriancadag/psadmin.git"
+  },
+  "author": "Adrian P. Cadag",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adriancadag/psadmin/issues"
+  },
+  "homepage": "https://github.com/adriancadag/psadmin#readme",
+  "dependencies": {
+    "gulp": "^4.0.0",
+    "gulp-connect": "^5.7.0",
+    "gulp-open": "^3.0.1"
+  }
+}
