@@ -1,8 +1,8 @@
 "use strict";
 
-import gulp from 'gulp';
-import connect from 'gulp-connect'; /* Runs a local dev server */
-import open from 'gulp-open'; /* Open a URL in a web browser */
+var gulp = require('gulp');
+var connect = require('gulp-connect'); /* Runs a local dev server */
+var open = require('gulp-open'); /* Open a URL in a web browser */
 
 var config = {
   port: 3000,
@@ -16,7 +16,7 @@ var config = {
 /* Start a local development server */
 gulp.task('connect', function() {
   connect.server({
-    root: [dist],
+    root: ['dist'],
     port: config.port,
     base: config.devBaseUrl,
     livereload: true
