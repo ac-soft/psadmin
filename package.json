@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/adriancadag/psadmin#readme",
   "dependencies": {
-    "gulp": "^3.9.0",
+    "gulp": "^4.0.0",
     "gulp-connect": "^5.7.0",
     "gulp-open": "^3.0.1"
   }
