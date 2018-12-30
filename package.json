@@ -18,10 +18,10 @@
   "homepage": "https://github.com/adriancadag/psadmin#readme",
   "dependencies": {
     "browserify": "^16.2.3",
-    "gulp": "3.9.0",
+    "gulp": "^4.0.0",
     "gulp-connect": "^5.7.0",
     "gulp-open": "3.0.1",
     "reactify": "^1.1.1",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^2.0.0"
   }
 }
