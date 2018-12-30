@@ -19,7 +19,7 @@ var config = {
 }
 
 /* Start a local development server */
-gulp.task('connect', function(done) {
+gulp.task('connect', done => {
   connect.server({
     root: ['dist'],
     port: config.port,
@@ -30,20 +30,20 @@ gulp.task('connect', function(done) {
   done();
 });
 
-gulp.task('open', gulp.series(['connect']), function(done) {
+gulp.task('open', gulp.series(['connect']), done => {
   gulp.src('dist/index.html')
     .pipe(open({ uri: config.devBaseUrl + ':' + config.port + '/' }));
     done();
 });
 
-gulp.task('html', function(done) {
+gulp.task('html', done => {
   gulp.src(config.paths.html)
     .pipe(gulp.dest(config.paths.dist))
     .pipe(connect.reload());
     done();
 });
 
-gulp.task('js', function(done) {
+gulp.task('js', done => {
   browserify(config.paths.mainJs)
     .transform(reactify)
     .bundle()
