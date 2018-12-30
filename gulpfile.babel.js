@@ -6,6 +6,7 @@ import open from'gulp-open'; /* Open a URL in a web browser */
 import browserify from'browserify'; /* Bundles JS */
 import reactify from'reactify'; /* Transforms React JSX to JS */
 import source from'vinyl-source-stream'; /* Use conventional text streams with Gulp */
+import concat from 'gulp-concat';
 
 var config = {
   port: 3000,
@@ -13,6 +14,10 @@ var config = {
   paths: {
     html: './src/*.html',
     js: './src/**/*.js',
+    css: [
+      'node_modules/bootstrap/dist/css/bootstrap.min.css',
+      'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
+    ],
     dist: './dist',
     mainJs: './src/main.js'
   }
@@ -54,10 +59,17 @@ gulp.task('js', done => {
     done();
 });
 
+gulp.task('css', done => {
+  gulp.src(config.paths.css)
+    .pipe(concat('bundle.css'))
+    .pipe(gulp.dest(config.paths.dist + '/css'));
+  done();
+});
+
 gulp.task('watch', gulp.parallel(done => {
   gulp.watch(config.paths.html, gulp.series(['html']));
   gulp.watch(config.paths.js, gulp.series(['js']));
   done();
 }));
 
-gulp.task('default', gulp.series(['html', 'js', 'open', 'watch']));
+gulp.task('default', gulp.series(['html', 'js', 'css', 'open', 'watch']));
