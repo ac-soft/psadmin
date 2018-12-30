@@ -19,20 +19,21 @@ var config = {
 }
 
 /* Start a local development server */
-gulp.task('connect', gulp.series(function(done) {
+gulp.task('connect', function(done) {
   connect.server({
     root: ['dist'],
     port: config.port,
     base: config.devBaseUrl,
-    livereload: true
+    livereload: true,
+    open: true
   });
   done();
-}));
+});
 
 gulp.task('open', gulp.series(['connect']), function(done) {
   gulp.src('dist/index.html')
     .pipe(open({ uri: config.devBaseUrl + ':' + config.port + '/' }));
-  done();
+    done();
 });
 
 gulp.task('html', function(done) {
@@ -53,7 +54,7 @@ gulp.task('js', function(done) {
     done();
 });
 
-gulp.task('watch', gulp.series(function(done) {
+gulp.task('watch', gulp.parallel(function(done) {
   gulp.watch(config.paths.html, gulp.series(['html']));
   gulp.watch(config.paths.js, gulp.series(['js']));
   done();
