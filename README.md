@@ -10,3 +10,4 @@ npm install --save gulp@3.9.0
 npm install --save gulp-connect@5.7.0
 
 [sudo] npm install -g gulp@3.9.0
+[sudo] npm install -g gulp-cli

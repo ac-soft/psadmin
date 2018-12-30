@@ -1,11 +1,11 @@
 "use strict";
 
-var gulp = require('gulp');
-var connect = require('gulp-connect'); /* Runs a local dev server */
-var open = require('gulp-open'); /* Open a URL in a web browser */
-var browserify = require('browserify'); /* Bundles JS */
-var reactify = require('reactify'); /* Transforms React JSX to JS */
-var source = require('vinyl-source-stream'); /* Use conventional text streams with Gulp */
+import gulp from 'gulp';
+import connect from'gulp-connect'; /* Runs a local dev server */
+import open from'gulp-open'; /* Open a URL in a web browser */
+import browserify from'browserify'; /* Bundles JS */
+import reactify from'reactify'; /* Transforms React JSX to JS */
+import source from'vinyl-source-stream'; /* Use conventional text streams with Gulp */
 
 var config = {
   port: 3000,
@@ -54,7 +54,7 @@ gulp.task('js', function(done) {
     done();
 });
 
-gulp.task('watch', gulp.parallel(function(done) {
+gulp.task('watch', gulp.parallel(done => {
   gulp.watch(config.paths.html, gulp.series(['html']));
   gulp.watch(config.paths.js, gulp.series(['js']));
   done();
