@@ -7,6 +7,7 @@ import browserify from'browserify'; /* Bundles JS */
 import reactify from'reactify'; /* Transforms React JSX to JS */
 import source from'vinyl-source-stream'; /* Use conventional text streams with Gulp */
 import concat from 'gulp-concat';
+import lint from 'gulp-eslint';
 
 var config = {
   port: 3000,
@@ -66,10 +67,17 @@ gulp.task('css', done => {
   done();
 });
 
+gulp.task('lint', () => {
+  return gulp.src(config.paths.js)
+    .pipe(lint())
+    .pipe(lint.format())
+    .pipe(lint.failAfterError());
+});
+
 gulp.task('watch', gulp.parallel(done => {
   gulp.watch(config.paths.html, gulp.series(['html']));
-  gulp.watch(config.paths.js, gulp.series(['js']));
+  gulp.watch(config.paths.js, gulp.series(['js', 'lint']));
   done();
 }));
 
-gulp.task('default', gulp.series(['html', 'js', 'css', 'open', 'watch']));
+gulp.task('default', gulp.series(['html', 'js', 'css', 'lint', 'open', 'watch']));
